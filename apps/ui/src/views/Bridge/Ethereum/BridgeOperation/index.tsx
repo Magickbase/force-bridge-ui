@@ -1,4 +1,5 @@
 import Icon from '@ant-design/icons';
+import { parseAddress, encodeToAddress } from '@ckb-lumos/helpers';
 import { Button, Divider, Modal, Row, Spin, Table, Typography } from 'antd';
 import { createInstance } from 'dotbit/lib/index';
 import { useFormik } from 'formik';
@@ -203,6 +204,14 @@ export const BridgeOperationForm: React.FC = () => {
       />
     );
 
+  function ckbAddressAdaptEnv(address: string) {
+    if (!address || (!address.startsWith('ckb') && !address.startsWith('ckt'))) return address;
+    const prefix = envNetwork === 'mainnet' ? 'ckb' : 'ckt';
+    if (address.startsWith(prefix)) return address;
+    const lockScript = parseAddress(address, { config: { PREFIX: address.substring(0, 3), SCRIPTS: {} } });
+    return encodeToAddress(lockScript, { config: { PREFIX: prefix, SCRIPTS: {} } });
+  }
+
   return (
     <BridgeViewWrapper>
       <WalletConnectorButton block type="primary" />
@@ -312,17 +321,21 @@ export const BridgeOperationForm: React.FC = () => {
               createInstance()
                 .addrs(value)
                 .then((d) => {
-                  const addresses = d.filter(
-                    (addr) =>
-                      addr.key ===
-                      `address.${
-                        direction === BridgeDirection.In
-                          ? 'ckb'
-                          : network === 'Ethereum'
-                          ? 'eth'
-                          : network.toLowerCase()
-                      }`,
-                  );
+                  const addresses = d
+                    .filter(
+                      (addr) =>
+                        addr.key ===
+                        `address.${
+                          direction === BridgeDirection.In
+                            ? 'ckb'
+                            : network === 'Ethereum'
+                            ? 'eth'
+                            : network.toLowerCase()
+                        }`,
+                    )
+                    .map((addr) =>
+                      addr.key === 'address.ckb' ? { ...addr, value: ckbAddressAdaptEnv(addr.value) } : addr,
+                    );
                   if (addresses.length === 1) {
                     setRecipient(addresses[0].value);
                   } else if (addresses.length > 1) {
