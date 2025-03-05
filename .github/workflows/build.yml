@@ -31,10 +31,12 @@ jobs:
         IMAGETAG=$(git rev-parse --short=7 ${{ github.sha }})-$(TZ=Asia/Shanghai date +'%Y%m%d%H%M')
 
         # mainnet
+        cp .env-mainnet .env
         docker build -t "${{ env.IMAGE_NAME }}-mainnet:${IMAGETAG}" -f dockerfile-mainnet . 
         docker push "${{ env.IMAGE_NAME }}-mainnet:${IMAGETAG}"
 
         # testnet
+        cp .env-mainnet .env
         docker build -t "${{ env.IMAGE_NAME }}-testnet:${IMAGETAG}" -f dockerfile-testnet . 
         docker push "${{ env.IMAGE_NAME }}-testnet:${IMAGETAG}"
 
