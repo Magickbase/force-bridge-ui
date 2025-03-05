@@ -28,7 +28,7 @@ jobs:
 
     - name: Build and Push
       run: |
-        IMAGETAG=$(git rev-parse --abbrev-ref HEAD)-$(git rev-parse --short=7 ${{ github.sha }})-$(TZ=Asia/Shanghai date +'%Y%m%d%H%M')
+        IMAGETAG=$(git rev-parse --short=7 ${{ github.sha }})-$(TZ=Asia/Shanghai date +'%Y%m%d%H%M')
 
         # mainnet
         docker build -t "${{ env.IMAGE_NAME }}-mainnet:${IMAGETAG}" -f dockerfile-mainnet . 
