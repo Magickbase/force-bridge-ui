@@ -1,0 +1,13 @@
+FROM node:12 as builder
+
+WORKDIR /tmp
+
+COPY . /tmp
+
+RUN yarn install && yarn build:lib && yarn workspace @force-bridge/ui run build
+
+FROM nginx:1.18.0
+
+COPY --from=builder /tmp/apps/ui/build /usr/share/nginx/dist
+
+CMD [ "nginx", "-g", "daemon off;"]
