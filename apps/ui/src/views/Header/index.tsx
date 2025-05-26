@@ -62,13 +62,13 @@ export const AppHeader: React.FC = () => {
         message={
           <div style={{ textAlign: 'center' }}>
             <Typography.Text>
-              The CKB wallet have been switched from pw-lock to omni-lock. If you have assets locked in previous wallet,
-              please visit{' '}
+            Thank you for your continued support. To align with the evolving landscape of CKB ecosystem, Force Bridge will enter the phase-out stage on June 1, 2025, and officially cease operation on November 30, 2025.
+            For more detail, please refer to{' '}
               <Typography.Link
-                href="https://github.com/nervosnetwork/force-bridge/blob/main/docs/asset-migration-guide.md"
+                href="https://sunset.forcebridge.com"
                 target="_blank"
               >
-                Asset Migration Guide
+                End of an Era: Force Bridge Sunset
               </Typography.Link>
             </Typography.Text>
           </div>
