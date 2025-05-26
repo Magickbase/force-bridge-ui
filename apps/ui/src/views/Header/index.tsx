@@ -61,8 +61,8 @@ export const AppHeader: React.FC = () => {
         message={
           <div style={{ textAlign: 'center' }}>
             <Typography.Text>
-              Thank you for your continued support. To align with the evolving landscape of CKB ecosystem, <strong>Force
-                Bridge will enter the phase-out stage on June 1, 2025</strong>, and{' '}
+              Thank you for your continued support. To align with the evolving landscape of CKB ecosystem,{' '}
+              <strong>Force Bridge will enter the phase-out stage on June 1, 2025</strong>, and{' '}
               <strong>officially cease operation on November 30, 2025</strong>. For more detail, please refer to{' '}
               <Typography.Link href="https://sunset.forcebridge.com" target="_blank">
                 End of an Era: Force Bridge Sunset
