@@ -16,7 +16,6 @@ export const NetworkDirectionSelector: React.FC<NetworkDirectionSelectorProps> =
   const { network, direction, networks, onSelect } = props;
 
   const selected = useMemo(() => {
-    if (direction === BridgeDirection.In) return { from: network, to: NERVOS_NETWORK };
     return { from: NERVOS_NETWORK, to: network };
   }, [direction, network]);
 
