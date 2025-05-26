@@ -21,7 +21,7 @@ export const NetworkDirectionSelector: React.FC<NetworkDirectionSelectorProps> =
   }, [direction, network]);
 
   const directionItems = networks.flatMap((network) => [
-    { key: network + '-' + NERVOS_NETWORK, network, direction: BridgeDirection.In, from: network, to: NERVOS_NETWORK },
+    // { key: network + '-' + NERVOS_NETWORK, network, direction: BridgeDirection.In, from: network, to: NERVOS_NETWORK },
     { key: NERVOS_NETWORK + '-' + network, network, direction: BridgeDirection.Out, from: NERVOS_NETWORK, to: network },
   ]);
 
