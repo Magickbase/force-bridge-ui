@@ -64,10 +64,7 @@ export const AppHeader: React.FC = () => {
             <Typography.Text>
             Thank you for your continued support. To align with the evolving landscape of CKB ecosystem, Force Bridge will enter the phase-out stage on June 1, 2025, and officially cease operation on November 30, 2025.
             For more detail, please refer to{' '}
-              <Typography.Link
-                href="https://sunset.forcebridge.com"
-                target="_blank"
-              >
+              <Typography.Link href="https://sunset.forcebridge.com" target="_blank">
                 End of an Era: Force Bridge Sunset
               </Typography.Link>
             </Typography.Text>
